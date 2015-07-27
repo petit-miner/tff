@@ -1,24 +1,32 @@
-## Telegram messenger CLI [![Build Status](https://travis-ci.org/vysheng/tg.png)](https://travis-ci.org/vysheng/tg)
+## Telegram messenger Client für Freetz
 
-Command-line interface for [Telegram](http://telegram.org). Uses readline interface.
+TFF ist eine Portierung von Telegram für die Wlan Router von AVM mit Freetz.
+Die Grundidee Telegram als Source Code bereitzustellen hatte Vitaly Valtman, hier findet ihr sein Repository: https://github.com/vysheng/tg
 
-### API, Protocol documentation
+ ###Installation
+Als erstes müsst ihr eine funktionierende Freetz Cross Compiler Toolchain passend für eure Fritzbox erstellt haben(Anleitungen wie dies funktioniert findet ihr hier:http://freetz.org/wiki/help/howtos/common/newbie) , wichtig ist dabei das ihr folgende Pakete auf eurem Linux System installiert habt:
 
-Documentation for Telegram API is available here: http://core.telegram.org/api
+libreadline-dev 
+libconfig-dev 
+libssl-dev 
+lua5.2 
+liblua5.2-dev 
+libevent-dev 
+libjansson-dev 
+libpython-dev 
+make
 
-Documentation for MTproto protocol is available here: http://core.telegram.org/mtproto
+Zusätzlich benötigt ihr ein paar Büchereien die über das Freetz Menü
+mit make menuconfig ausgewählt werden müssen:
 
-### Upgrading to version 1.0
+libevent 
+openssl
+zlib
+readline
+libconfig
+libubacktrace (kann nur angewählt werden wenn ihr den Toolchain Compiler      
+                        auf uClibc Version 0.9.33.2 einstellt) 
 
-First of all, the binary is now in ./bin folder and is named telegram-cli. So be careful, not to use old binary.
-
-Second, config folder is now ${HOME}/.telegram-cli
-
-Third, database is not compatible with older versions, so you'll have to login again.
-
-Fourth, in peer_name '#' are substitued to '@'. (Not applied to appending of '#%d' in case of two peers having same name).
-
-### Installation
 
 Clone GitHub Repository
 
@@ -26,115 +34,11 @@ Clone GitHub Repository
 
 ### Python Support
 
-Python support is currently limited to Python 2.7 or Python 3.1+. Other versions may work but are not tested.
+Momentan gibt es noch keinen Python Support, das steht aber noch auf der TO DO Liste.
 
-#### Linux and BSDs
+ ### Unterstützte Befehle
 
-Install libs: readline, openssl and (if you want to use config) libconfig, liblua, python and libjansson.
-If you do not want to use them pass options --disable-libconfig, --disable-liblua, --disable-python and --disable-json respectively.
-
-On Ubuntu/Debian use: 
-
-     sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson-dev libpython-dev make 
-
-On gentoo:
-
-     sudo emerge -av sys-libs/readline dev-libs/libconfig dev-libs/openssl dev-lang/lua dev-libs/libevent dev-libs/jansson dev-lang/python
-
-On Fedora:
-
-     sudo dnf install lua-devel openssl-devel libconfig-devel readline-devel libevent-devel libjansson-devel python-devel
-
-On Archlinux:
-
-     yaourt -S telegram-git
-
-On FreeBSD:
-
-     pkg install libconfig libexecinfo lua52 python
-
-On OpenBSD:
-
-     pkg_add libconfig libexecinfo lua python
-
-On openSUSE:
-
-     sudo zypper in lua-devel libconfig-devel readline-devel libevent-devel libjansson-devel python-devel libopenssl-devel
-
-Then,
-
-     ./configure
-     make
-
-#### Other methods to install on linux
-
-On Gentoo: use ebuild provided.
-
-On Arch: https://aur.archlinux.org/packages/telegram-git/ 
-
-#### Mac OS X
-
-The client depends on [readline library](http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html) and [libconfig](http://www.hyperrealm.com/libconfig/), which are not included in OS X by default. You have to install these libraries manually.
-
-If using [Homebrew](http://brew.sh/):
-
-     brew install libconfig readline lua python libevent jansson
-     export CFLAGS="-I/usr/local/include -I/usr/local/Cellar/readline/6.3.8/include"
-     export LDFLAGS="-L/usr/local/lib -L/usr/local/Cellar/readline/6.3.8/lib"
-     ./configure && make
-
-Thanks to [@jfontan](https://github.com/vysheng/tg/issues/3#issuecomment-28293731) for this solution.
-
-If using [MacPorts](https://www.macports.org):
-     
-     sudo port install libconfig-hr
-     sudo port install readline
-     sudo port install lua51
-     sudo port install python34
-     sudo port install libevent
-     export CFLAGS="-I/usr/local/include -I/opt/local/include -I/opt/local/include/lua-5.1"
-     export LDFLAGS="-L/usr/local/lib -L/opt/local/lib -L/opt/local/lib/lua-5.1"
-     ./configure && make
-
-Install these ports:
-
-* devel/libconfig
-* devel/libexecinfo
-* lang/lua52
-
-Then build:
-
-     env CC=clang CFLAGS=-I/usr/local/include LDFLAGS=-L/usr/local/lib LUA=/usr/local/bin/lua52 LUA_INCLUDE=-I/usr/local/include/lua52 LUA_LIB=-llua-5.2 ./configure
-     make
-
-#### Other UNIX
-
-If you manage to launch it on other UNIX, please let me know.
-
-### Contacts 
-If you would like to ask a question, you can write to my telegram or to the github (or both). To contact me via telegram, you should use import_card method with argument 000653bf:0738ca5d:5521fbac:29246815:a27d0cda
-
-
-### Usage
-
-    bin/telegram-cli -k <public-server-key>
-    
-By default, the public key is stored in tg-server.pub in the same folder or in /etc/telegram-cli/server.pub. If not, specify where to find it:
-
-    bin/telegram-cli -k tg-server.pub
-
-Client support TAB completion and command history.
-
-Peer refers to the name of the contact or dialog and can be accessed by TAB completion.
-For user contacts peer name is Name <underscore> Lastname with all spaces changed to underscores.
-For chats it is it's title with all spaces changed to underscores
-For encrypted chats it is <Exсlamation mark> <underscore> Name <underscore> Lastname with all spaces changed to underscores. 
-
-If two or more peers have same name, <sharp>number is appended to the name. (for example A_B, A_B#1, A_B#2 and so on)
-  
-### Supported commands
-
-#### Messaging
+### Nachrichten versenden löschen usw.
 
 * **msg** \<peer\> Text - sends message to this peer
 * **fwd** \<user\> \<msg-seqno\> - forward message to user. You can see message numbers starting client with -N
@@ -156,7 +60,7 @@ If two or more peers have same name, <sharp>number is appended to the name. (for
 * **set_profile_photo** \<photo-file-name\> - sets userpic. Photo should be square, or server will cut biggest central square part
 
 
-#### Group chat options
+#### Gruppenchats Optionen 
 
 * **chat_info** \<chat\> - prints info about chat
 * **chat_add_user** \<chat\> \<user\> - add user to chat
@@ -165,19 +69,19 @@ If two or more peers have same name, <sharp>number is appended to the name. (for
 * **create_group_chat** \<chat topic\> \<user1\> \<user2\> \<user3\> ... - creates a groupchat with users, use chat_add_user to add more users
 * **chat_set_photo** \<chat\> \<photo-file-name\> - sets group chat photo. Same limits as for profile photos.
 
-#### Search
+#### Suche
 
 * **search** \<peer\> pattern - searches pattern in messages with peer
 * **global_search** pattern - searches pattern in all messages
 
-#### Secret chat
+#### Verschlüsselte Chats
 
 * **create_secret_chat** \<user\> - creates secret chat with this user
 * **visualize_key** \<secret_chat\> - prints visualization of encryption key. You should compare it to your partner's one
 * **set_ttl** \<secret_chat\> \<ttl\> - sets ttl to secret chat. Though client does ignore it, client on other end can make use of it
 * **accept_secret_chat** \<secret_chat\> - manually accept secret chat (only useful when starting with -E key)
 
-#### Stats and various info
+#### Statistiken und weitere Informationen
 
 * **user_info** \<user\> - prints info about user
 * **history** \<peer\> [limit] - prints history (and marks it as read). Default limit = 40
@@ -189,11 +93,11 @@ If two or more peers have same name, <sharp>number is appended to the name. (for
 * **help** - prints this help
 * **get_self** - get our user info
 
-#### Card
+#### Import und Export von Kontaktdaten
 * **export_card** - print your 'card' that anyone can later use to import your contact
 * **import_card** \<card\> - gets user by card. You can write messages to him after that.
 
-#### Other
+#### Beenden von Telegram 
 * **quit** - quit
 * **safe_quit** - wait for all queries to end then quit
 # tff
