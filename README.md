@@ -43,11 +43,9 @@ Ihr benötigt diese nur zum kompilieren.</p>
 <p><code>mkdir ~/src &amp;&amp; git clone https://github.com/petit-miner/tff.git</code></p>
 
 <p>Danach müsst ihr den Pfad eurer Freetz Installation angeben</p>
+<br><p><code>nano /tff/install.sh</code></p>
 
-<p><code>nano /tff/install.sh</code></p>
-
-<p>Am Anfang der Datei findet ihr dies 
-
+<p>Am Anfang der Datei findet ihr dies <br>
 <code>FREETZ=/hier/Pfad/zur/freetz/Installation/angeben</code></p>
 
 <p>Nachdem ihr die Datei gespeichert habt führt ihr diese aus 
