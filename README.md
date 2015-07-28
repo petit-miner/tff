@@ -1,103 +1,119 @@
-## Telegram messenger Client für Freetz
+ <!DOCTYPE html>
+<html>
 
-TFF ist eine Portierung von Telegram für die Wlan Router von AVM mit Freetz.
-Die Grundidee Telegram als Source Code bereitzustellen hatte Vitaly Valtman, hier findet ihr sein Repository: https://github.com/vysheng/tg
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Tff : Telegram für Freetz">
 
- ###Installation
-Als erstes müsst ihr eine funktionierende Freetz Cross Compiler Toolchain passend für eure Fritzbox erstellt haben(Anleitungen wie dies funktioniert findet ihr hier:http://freetz.org/wiki/help/howtos/common/newbie) , wichtig ist dabei das ihr folgende Pakete auf eurem Linux System installiert habt:
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-libreadline-dev 
-libconfig-dev 
-libssl-dev 
-lua5.2 
-liblua5.2-dev 
-libevent-dev 
-libjansson-dev 
-libpython-dev 
-make
+    <title>Tff</title>
+  </head>
 
-Zusätzlich benötigt ihr ein paar Büchereien die über das Freetz Menü
-mit make menuconfig ausgewählt werden müssen:
+  <body>
 
-libevent 
-openssl
-zlib
-readline
-libconfig
-libubacktrace (kann nur angewählt werden wenn ihr den Toolchain Compiler      
-                        auf uClibc Version 0.9.33.2 einstellt) 
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/petit-miner/tff">View on GitHub</a>
 
+          <h1 id="project_title">Tff</h1>
+          <h2 id="project_tagline">Telegram für Freetz</h2>
 
-Clone GitHub Repository
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/petit-miner/tff/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/petit-miner/tff/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
 
-     git clone --recursive https://github.com/vysheng/tg.git && cd tg
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="telegram-messenger-client-für-freetz" class="anchor" href="#telegram-messenger-client-f%C3%BCr-freetz" aria-hidden="true"><span class="octicon octicon-link"></span></a>Telegram messenger Client für Freetz</h1>
 
-### Python Support
+<p>TFF ist eine Portierung von Telegram für die Wlan Router von AVM mit Freetz.
+Die Grundidee Telegram als Source Code bereitzustellen hatte Vitaly Valtman, 
+<a href="https://github.com/vysheng/tg">hier</a> findet ihr sein Repository.</p>
 
-Momentan gibt es noch keinen Python Support, das steht aber noch auf der TO DO Liste.
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
- ### Unterstützte Befehle
+<p>Als erstes müsst ihr eine funktionierende Freetz Cross Compiler Toolchain passend für eure Fritzbox erstellt haben(Anleitungen wie dies funktioniert findet ihr <a href="http://freetz.org/wiki/help/howtos/common/newbie">hier</a>, wichtig ist dabei das ihr folgende Pakete auf eurem Linux System installiert habt:</p>
 
-### Nachrichten versenden löschen usw.
+<ul>
+<li>libreadline-dev </li>
+<li>libconfig-dev </li>
+<li>libssl-dev </li>
+<li>lua5.2 </li>
+<li>liblua5.2-dev </li>
+<li>libevent-dev </li>
+<li>libjansson-dev </li>
+<li>libpython-dev </li>
+<li>make</li>
+</ul>
 
-* **msg** \<peer\> Text - sends message to this peer
-* **fwd** \<user\> \<msg-seqno\> - forward message to user. You can see message numbers starting client with -N
-* **chat_with_peer** \<peer\> starts one on one chat session with this peer. /exit or /quit to end this mode.
-* **add_contact** \<phone-number\> \<first-name\> \<last-name\> - tries to add contact to contact-list by phone
-* **rename_contact** \<user\> \<first-name\> \<last-name\> - tries to rename contact. If you have another device it will be a fight
-* **mark_read** \<peer\> - mark read all received messages with peer
-* **delete_msg** \<msg-seqno\> - deletes message (not completly, though)
-* **restore_msg** \<msg-seqno\> - restores delete message. Impossible for secret chats. Only possible short time (one hour, I think) after deletion
+<p>Zusätzlich benötigt ihr ein paar Büchereien die über das Freetz Menü
+mit make menuconfig ausgewählt werden müssen:</p>
 
-#### Multimedia
+<ul>
+<li>libevent </li>
+<li>openssl</li>
+<li>zlib</li>
+<li>readline</li>
+<li>libconfig</li>
+<li>libubacktrace² </li>
+</ul>
 
-* **send_photo** \<peer\> \<photo-file-name\> - sends photo to peer
-* **send_video** \<peer\> \<video-file-name\> - sends video to peer
-* **send_text** \<peer\> \<text-file-name> - sends text file as plain messages
-* **load_photo**/load_video/load_video_thumb/load_audio/load_document/load_document_thumb \<msg-seqno\> - loads photo/video/audio/document to download dir
-* **view_photo**/view_video/view_video_thumb/view_audio/view_document/view_document_thumb \<msg-seqno\> - loads photo/video to download dir and starts system default viewer
-* **fwd_media** \<msg-seqno\> send media in your message. Use this to prevent sharing info about author of media (though, it is possible to determine user_id from media itself, it is not possible get access_hash of this user)
-* **set_profile_photo** \<photo-file-name\> - sets userpic. Photo should be square, or server will cut biggest central square part
+<p>²(kann nur angewählt werden wenn ihr den Toolchain Compiler auf uClibc Version 0.9.33.2 einstellt) </p>
 
+<p>Da wir nachdem Kompilieren die telegram-cli Datei linken und strippen werden, werden die oben genannten Büchereien auf eurer Fritzbox nicht benötigt.
+Ihr benötigt diese nur zum kompilieren.</p>
 
-#### Gruppenchats Optionen 
+<p>Als nächstes müsst ihr ein Verzeichnis mit dem Namen src in eurem Homeverzeichnis erstellen und anschließend mein Repository clonen: </p>
 
-* **chat_info** \<chat\> - prints info about chat
-* **chat_add_user** \<chat\> \<user\> - add user to chat
-* **chat_del_user** \<chat\> \<user\> - remove user from chat
-* **rename_chat** \<chat\> \<new-name\>
-* **create_group_chat** \<chat topic\> \<user1\> \<user2\> \<user3\> ... - creates a groupchat with users, use chat_add_user to add more users
-* **chat_set_photo** \<chat\> \<photo-file-name\> - sets group chat photo. Same limits as for profile photos.
+<p><code>mkdir ~/src &amp;&amp; git clone https://github.com/petit-miner/tff.git</code></p>
 
-#### Suche
+<p>Danach müsst ihr den Pfad eurer Freetz Installation angeben</p>
 
-* **search** \<peer\> pattern - searches pattern in messages with peer
-* **global_search** pattern - searches pattern in all messages
+<p><code>nano /tff/install.sh</code></p>
 
-#### Verschlüsselte Chats
+<p>Am Anfang der Datei findet ihr dies
+<code>FREETZ=/hier/Pfad/zur/freetz/Installation/angeben</code></p>
 
-* **create_secret_chat** \<user\> - creates secret chat with this user
-* **visualize_key** \<secret_chat\> - prints visualization of encryption key. You should compare it to your partner's one
-* **set_ttl** \<secret_chat\> \<ttl\> - sets ttl to secret chat. Though client does ignore it, client on other end can make use of it
-* **accept_secret_chat** \<secret_chat\> - manually accept secret chat (only useful when starting with -E key)
+<p>Nachdem ihr die Datei gespeichert habt führt ihr diese aus
+<code>sudo ./install.sh</code></p>
 
-#### Statistiken und weitere Informationen
+<p>Wenn alles funktioniert habt findet ihr alle wichtige Dateien im Ordner files.</p>
 
-* **user_info** \<user\> - prints info about user
-* **history** \<peer\> [limit] - prints history (and marks it as read). Default limit = 40
-* **dialog_list** - prints info about your dialogs
-* **contact_list** - prints info about users in your contact list
-* **suggested_contacts** - print info about contacts, you have max common friends
-* **stats** - just for debugging
-* **show_license** - prints contents of GPLv2
-* **help** - prints this help
-* **get_self** - get our user info
+<h3>
+<a id="python-support" class="anchor" href="#python-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Python Support</h3>
 
-#### Import und Export von Kontaktdaten
-* **export_card** - print your 'card' that anyone can later use to import your contact
-* **import_card** \<card\> - gets user by card. You can write messages to him after that.
+<p>Momentan gibt es noch keinen Python Support, das steht aber noch auf der TO DO Liste.</p>
 
-#### Beenden von Telegram 
-* **quit** - quit
-* **safe_quit** - wait for all queries to end then quit
-# tff
+<h3>
+<a id="lua-support" class="anchor" href="#lua-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>LUA Support</h3>
+
+<p>Momentan gibt es noch keinen LUA Support, das steht aber noch auf der TO DO Liste.</p>
+
+<h3>
+<a id="unterstützte-befehle" class="anchor" href="#unterst%C3%BCtzte-befehle" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unterstützte Befehle</h3>
+
+<p>Alle unterstütze Befehle findet ihr auf der Seite von <a href="https://github.com/vysheng/tg">Vitaly Valtman</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Tff maintained by <a href="https://github.com/petit-miner">petit-miner</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
