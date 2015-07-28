@@ -1,11 +1,11 @@
- <a id="telegram-messenger-client-für-freetz" class="anchor" href="#telegram-messenger-client-f%C3%BCr-freetz" aria-hidden="true"><span class="octicon octicon-link"></span></a>Telegram messenger Client für Freetz</h1>
+<h1><a id="telegram-messenger-client-für-freetz" class="anchor" href="#telegram-messenger-client-f%C3%BCr-freetz" aria-hidden="true"><span class="octicon octicon-link"></span></a>Telegram messenger Client für Freetz</h1>
 
 <p>TFF ist eine Portierung von Telegram für die Wlan Router von AVM mit Freetz.
 Die Grundidee Telegram als Source Code bereitzustellen hatte Vitaly Valtman, 
 <a href="https://github.com/vysheng/tg">hier</a> findet ihr sein Repository.</p>
 
-<h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+<h4>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h4>
 
 <p>Als erstes müsst ihr eine funktionierende Freetz Cross Compiler Toolchain passend für eure Fritzbox erstellt haben(Anleitungen wie dies funktioniert findet ihr <a href="http://freetz.org/wiki/help/howtos/common/newbie">hier</a>, wichtig ist dabei das ihr folgende Pakete auf eurem Linux System installiert habt:</p>
 
