@@ -44,7 +44,7 @@ Ihr benötigt diese nur zum kompilieren.</p>
 
 <p>Danach müsst ihr den Pfad eurer Freetz Installation angeben</p>
 <br>
-<p><code>nano /tff/install.sh</code></p>
+<p><code>cd tff && chmod +x install.sh && nano install.sh</code></p>
 
 <p>Am Anfang der Datei findet ihr dies 
 <br>
