@@ -47,9 +47,11 @@ Ihr benötigt diese nur zum kompilieren.</p>
 <p><code>nano /tff/install.sh</code></p>
 
 <p>Am Anfang der Datei findet ihr dies <br>
+
 <code>FREETZ=/hier/Pfad/zur/freetz/Installation/angeben</code></p>
 
 <p>Nachdem ihr die Datei gespeichert habt führt ihr diese aus <br>
+
 <code>sudo ./install.sh</code></p>
 
 <p>Wenn alles funktioniert habt findet ihr alle wichtige Dateien im Ordner files.</p>
