@@ -68,17 +68,7 @@ Ihr benötigt diese nur zum kompilieren.</p>
 <a id="unterstützte-befehle" class="anchor" href="#unterst%C3%BCtzte-befehle" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unterstützte Befehle</h3>
 
 <p>Alle unterstütze Befehle findet ihr auf der Seite von <a href="https://github.com/vysheng/tg">Vitaly Valtman</a></p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Tff maintained by <a href="https://github.com/petit-miner">petit-miner</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
+     
     
 
   </body>
