@@ -21,7 +21,7 @@ Die Grundidee Telegram als Source Code bereitzustellen hatte Vitaly Valtman,
 <li>make</li>
 </ul>
 
-<p>Zusätzlich benötigt ihr ein paar Büchereien die über das Freetz Menü
+<p>Zusätzlich benötigt ihr ein paar Bibliotheken die über das Freetz Menü
 mit make menuconfig ausgewählt werden müssen:</p>
 
 <ul>
@@ -35,7 +35,7 @@ mit make menuconfig ausgewählt werden müssen:</p>
 
 <p>²(kann nur angewählt werden wenn ihr den Toolchain Compiler auf uClibc Version 0.9.33.2 einstellt) </p>
 
-<p>Da wir nachdem Kompilieren die telegram-cli Datei linken und strippen werden, werden die oben genannten Büchereien auf eurer Fritzbox nicht benötigt.
+<p>Da wir nachdem Kompilieren die telegram-cli Datei linken und strippen werden, werden die oben genannten Bibliotheken auf eurer Fritzbox nicht benötigt.
 Ihr benötigt diese nur zum kompilieren.</p>
 
 <p>Als nächstes müsst ihr ein Verzeichnis mit dem Namen src in eurem Homeverzeichnis erstellen und anschließend mein Repository clonen: </p>
